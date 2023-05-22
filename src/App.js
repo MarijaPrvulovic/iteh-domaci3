@@ -1,24 +1,52 @@
-import logo from './logo.svg';
+ 
+import { useState } from 'react';
 import './App.css';
+import { BrowserRouter } from 'react-router-dom';
+import Pocetna from './Pocetna';
 
 function App() {
+
+  const [kvizPitanja, setKvizPitanja] = useState([
+    {
+      id:1,
+      pitanje: 'Koja je glavna prestonica Francuske?',
+      opcije: ['London', 'Pariz', 'Berlin', 'Rim'],
+      tacanOdgovor: 'Pariz'
+    },
+    {
+      id:2,
+      pitanje: 'Koja je najduža reka u svetu?',
+      opcije: ['Nil', 'Amazona', 'Misisipi', 'Jangce'],
+      tacanOdgovor: 'Nil'
+    },
+    {
+      id:3,
+      pitanje: 'Koje godine je otkrivena Amerika?',
+      opcije: ['1492.', '1521.', '1776.', '1812.'],
+      tacanOdgovor: '1492.'
+    },
+    {
+      id:4,
+      pitanje: 'Koja planeta je po veličini druga u Sunčevom sistemu?',
+      opcije: ['Venera', 'Mars', 'Jupiter', 'Saturn'],
+      tacanOdgovor: 'Mars'
+    },
+    {
+      id:5,
+      pitanje: 'Ko je autor knjige "Rat i mir"?',
+      opcije: ['Charles Dickens', 'Leo Tolstoy', 'Fyodor Dostoevsky', 'Jane Austen'],
+      tacanOdgovor: 'Leo Tolstoy'
+    }
+  ]);
+
+
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <BrowserRouter>
+      <Pocetna></Pocetna>
+     
+     </BrowserRouter>
   );
 }
 
