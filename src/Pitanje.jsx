@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import PonudjenOdgovor from './PonudjenOdgovor';
 
 const Pitanje = ({ pitanja }) => {
   const { id } = useParams();
@@ -19,9 +20,7 @@ const Pitanje = ({ pitanja }) => {
       </div>
       <div className="odgovori">
         {opcije.map((odgovor, index) => (
-          <div key={index} className="odgovor">
-            {odgovor}
-          </div>
+           <PonudjenOdgovor odgovor={odgovor}> </PonudjenOdgovor>
         ))}
       </div>
     </div>
