@@ -4,8 +4,9 @@ import PonudjenOdgovor from './PonudjenOdgovor';
 
 const Pitanje = ({ pitanja }) => {
   const { id } = useParams();
-  const trenutnoPitanje = pitanja.find(pitanje => pitanje.id === Number(id));
+  const trenutnoPitanje = pitanja.find((pitanje) => pitanje.id === Number(id));
   const [odgovorKorisnika, setOdgovorKorisnika] = useState(null);
+  const [odabraniOdgovor, setOdabraniOdgovor] = useState(null);
 
   if (!trenutnoPitanje) {
     return <div>Pitanje nije pronađeno.</div>;
@@ -20,18 +21,17 @@ const Pitanje = ({ pitanja }) => {
       </div>
       <div className="odgovori">
         {opcije.map((odgovor, index) => (
-           <PonudjenOdgovor 
-             odgovor={odgovor} 
-             tacanOdgovor={tacanOdgovor}
-             setOdgovorKorisnika={setOdgovorKorisnika}
-           />
+          <PonudjenOdgovor
+            key={odgovor}
+            odgovor={odgovor}
+            tacanOdgovor={tacanOdgovor}
+            setOdgovorKorisnika={setOdgovorKorisnika}
+            id={id}
+            odabraniOdgovor={odabraniOdgovor}
+            setOdabraniOdgovor={setOdabraniOdgovor}
+          />
         ))}
       </div>
-      {odgovorKorisnika && (
-        <div className={odgovorKorisnika === tacanOdgovor ? 'tacno' : 'netacno'}>
-          {odgovorKorisnika === tacanOdgovor ? 'Tačan odgovor!' : 'Netačan odgovor.'}
-        </div>
-      )}
     </div>
   );
 };
