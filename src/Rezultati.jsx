@@ -38,11 +38,12 @@ function Rezultati({rezultati,setRezultati}) {
       setPrikaziPrompt(false);
     }
   }, [prikaziPrompt, promptPrikazan]);
-
+ 
   const renderTabelaRezultata = () => {
     return (
-        <div className="pocetna">
-      <table>
+        <>
+        <div className="tabela-wrapper">
+        <table >
         <thead>
           <tr>
             <th>ID</th>
@@ -62,10 +63,14 @@ function Rezultati({rezultati,setRezultati}) {
       </table>
     
          
-          <Link to="/kviz/1" className="pocetna-dugme" onClick={handleClick}>
-            POČNI KVIZ
-          </Link>
+          
         </div>
+        <div className="pocetna">        <Link to="/kviz/1" className="pocetna-dugme" onClick={handleClick}>
+            POČNI KVIZ
+          </Link></div>
+
+        </>
+
     );
   };
 
