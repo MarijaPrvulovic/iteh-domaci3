@@ -40,9 +40,10 @@ function App() {
       tacanOdgovor: 'Leo Tolstoy'
     }
   ]);
+  window.sessionStorage.clear();
   window.sessionStorage.setItem("score","0");
 
-
+  const [rezultati, setRezultati] = useState([]);
 
   return (
      <BrowserRouter>
@@ -50,7 +51,7 @@ function App() {
       <Routes>
           <Route path='/' element={ <Pocetna></Pocetna>}></Route>
           <Route path='/kviz/:id' element={ <Pitanje pitanja={kvizPitanja} ></Pitanje>}></Route>
-          <Route path='/kraj' element={ <Rezultati  ></Rezultati>}></Route>
+          <Route path='/kraj' element={ <Rezultati  rezultati={rezultati} setRezultati={setRezultati}></Rezultati>}></Route>
 
 
       </Routes>
