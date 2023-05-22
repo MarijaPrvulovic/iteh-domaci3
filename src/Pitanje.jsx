@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import PonudjenOdgovor from './PonudjenOdgovor';
 
-const Pitanje = ({ pitanja }) => {
+const Pitanje = ({ pitanja,setSkor }) => {
   const { id } = useParams();
+  const navigate = useNavigate();
+
   const trenutnoPitanje = pitanja.find((pitanje) => pitanje.id === Number(id));
   const [odgovorKorisnika, setOdgovorKorisnika] = useState(null);
   const [odabraniOdgovor, setOdabraniOdgovor] = useState(null);
@@ -14,6 +16,26 @@ const Pitanje = ({ pitanja }) => {
 
   const { pitanje, opcije, tacanOdgovor } = trenutnoPitanje;
 
+  const jePoslednjePitanje = Number(id) === pitanja.length;
+
+  const handleClick = () => {
+    setOdabraniOdgovor(odgovorKorisnika);
+    setOdgovorKorisnika(null);
+
+    setTimeout(() => {
+      if (jePoslednjePitanje) {
+        navigate('/kraj');
+      } else {
+        const nextQuestionId = Number(id) + 1;
+        navigate(`/kviz/${nextQuestionId}`);
+      }
+    }, 1000);
+  };
+  if (odgovorKorisnika === tacanOdgovor) {     
+    var currentScore = window.sessionStorage.getItem("score");
+    var newScore = Number(currentScore)+0.5;
+    window.sessionStorage.setItem("score",newScore);
+}
   return (
     <div className="pitanje-container">
       <div className="pitanje">
@@ -29,9 +51,20 @@ const Pitanje = ({ pitanja }) => {
             id={id}
             odabraniOdgovor={odabraniOdgovor}
             setOdabraniOdgovor={setOdabraniOdgovor}
+            brojPitanja={pitanja.length}
           />
         ))}
       </div>
+      {jePoslednjePitanje && (
+        <div className="kraj-kviza">
+          <h2>KRAJ KVIZA</h2>
+        </div>
+      )}
+      {odgovorKorisnika && (
+        <div className={odgovorKorisnika === tacanOdgovor ? 'tacno' : 'netacno'} onClick={handleClick}>
+          
+        </div>
+      )}
     </div>
   );
 };

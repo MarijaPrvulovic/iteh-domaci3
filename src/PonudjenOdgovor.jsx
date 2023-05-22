@@ -8,6 +8,7 @@ const PonudjenOdgovor = ({
   id,
   odabraniOdgovor,
   setOdabraniOdgovor,
+  brojPitanja
 }) => {
   const [odabrano, setOdabrano] = useState(false);
   const navigate = useNavigate();
@@ -18,7 +19,13 @@ const PonudjenOdgovor = ({
     setOdabraniOdgovor(odgovor);
     setTimeout(() => {
       const nextQuestionId = Number(id) + 1;
-      navigate(`/kviz/${nextQuestionId}`);
+     
+      if(nextQuestionId==brojPitanja+1){
+        navigate('/kraj');
+      }else{
+        navigate(`/kviz/${nextQuestionId}`);
+      }
+      
     }, 1000);
   };
 

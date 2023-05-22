@@ -4,6 +4,7 @@ import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Pocetna from './Pocetna';
 import Pitanje from './Pitanje';
+import Rezultati from './Rezultati';
 
 function App() {
 
@@ -39,7 +40,7 @@ function App() {
       tacanOdgovor: 'Leo Tolstoy'
     }
   ]);
-
+  window.sessionStorage.setItem("score","0");
 
 
 
@@ -48,7 +49,8 @@ function App() {
      
       <Routes>
           <Route path='/' element={ <Pocetna></Pocetna>}></Route>
-          <Route path='/kviz/:id' element={ <Pitanje pitanja={kvizPitanja}></Pitanje>}></Route>
+          <Route path='/kviz/:id' element={ <Pitanje pitanja={kvizPitanja} ></Pitanje>}></Route>
+          <Route path='/kraj' element={ <Rezultati  ></Rezultati>}></Route>
 
 
       </Routes>
