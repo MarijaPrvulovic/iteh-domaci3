@@ -24,7 +24,7 @@ const Pitanje = ({ pitanja,setSkor }) => {
 
     setTimeout(() => {
       if (jePoslednjePitanje) {
-        navigate('/kraj');
+        navigate('/krajb');
       } else {
         const nextQuestionId = Number(id) + 1;
         navigate(`/kviz/${nextQuestionId}`);
