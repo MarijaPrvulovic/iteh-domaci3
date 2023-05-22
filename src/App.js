@@ -1,8 +1,9 @@
  
 import { useState } from 'react';
 import './App.css';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Pocetna from './Pocetna';
+import Pitanje from './Pitanje';
 
 function App() {
 
@@ -44,8 +45,13 @@ function App() {
 
   return (
      <BrowserRouter>
-      <Pocetna></Pocetna>
      
+      <Routes>
+          <Route path='/' element={ <Pocetna></Pocetna>}></Route>
+          <Route path='/kviz/:id' element={ <Pitanje pitanja={kvizPitanja}></Pitanje>}></Route>
+
+
+      </Routes>
      </BrowserRouter>
   );
 }

@@ -27,3 +27,30 @@
 .pocetna-dugme:hover {
   background-color: #45a049;
 }
+.pitanje-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+}
+
+.pitanje {
+  margin-bottom: 20px;
+  background-color: #ccc;
+  padding: 20px;
+}
+
+.odgovori {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.odgovor {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
